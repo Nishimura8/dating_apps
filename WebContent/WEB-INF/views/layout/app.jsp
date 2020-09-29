@@ -11,7 +11,9 @@
     <body>
         <div id="wrapper">
             <div id="header">
-                <h1>with</h1>
+                <div id="header_2">
+                    <img src="https://www.omiai-jp.com/omiai/img/global_menu/logo.svg?1592383735"alt="">
+                </div>
             </div>
             <div id="content">
                 ${param.content}

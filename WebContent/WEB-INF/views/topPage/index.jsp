@@ -3,5 +3,6 @@
 <c:import url="../layout/app.jsp">
     <c:param name="content">
         <h2>会員一覧</h2>
+        <img src="https://pbs.twimg.com/media/DxuoNYDU0AEpXqp.jpg" alt="" style="width: 25%;">
     </c:param>
 </c:import>
