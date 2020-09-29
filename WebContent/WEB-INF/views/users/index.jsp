@@ -8,27 +8,8 @@
             </div>
         </c:if>
         <h2>会員一覧</h2>
-        <table id="user_list">
-            <tbody>
-                <c:forEach var="user" items="${users}" varStatus="status">
-                    <tr class="row${status.count % 2}">
-                        <td><c:out value="${user.code}" /></td>
-                        <td><c:out value="${user.name}" /></td>
-                        <td>
-                            <c:choose>
-                                <c:when test="${user.delete_flag == 1}">
-                                    （削除済み）
-                                </c:when>
-                                <c:otherwise>
-                                    <a href="<c:url value='/employees/show?id=${user.id}' />">詳細を表示</a>
-                                </c:otherwise>
-                            </c:choose>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-
+         <c:out value="${user.Name}" />
+         <c:out value="${user.Image}" />
         <div id="pagination">
             （全 ${users_count} 件）<br />
             <c:forEach var="i" begin="1" end="${((employees_count - 1) / 15) + 1}" step="1">
