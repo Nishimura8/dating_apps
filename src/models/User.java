@@ -28,18 +28,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "Name", length = 255, nullable = false)
+    @Column(name = "name", length = 255, nullable = false)
     private String name;
     
-    @Column(name = "prefectures", length = 255, nullable = false)
-    private String prefectures;
-    
-    @Column(name = "age", nullable = false)
-    private Integer age;
+    @Column(name = "prefecture", length = 255, nullable = false)
+    private String prefecture;
     
     @Lob
     @Column(name = "image", columnDefinition="MEDIUMBLOB")
     private byte[] image;
+    
+    @Column(name = "age", nullable = false)
+    private Integer age;
+    
     
     public Integer getId() {
         return id;
@@ -58,11 +59,11 @@ public class User {
     }
 
     public String getPrefectures() {
-        return prefectures;
+        return prefecture;
     }
 
     public void setPrefectures(String prefectures) {
-        this.prefectures = prefectures;
+        this.prefecture = prefectures;
     }
     
     public int getAge() {
