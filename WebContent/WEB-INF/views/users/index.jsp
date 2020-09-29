@@ -8,11 +8,14 @@
             </div>
         </c:if>
         <h2>会員一覧</h2>
-         <c:out value="${user.Name}" />
-         <c:out value="${user.Image}" />
+        <div class="aa">
+            <c:forEach var="user" items="${users}">
+                <c:out value="${user.id}" />
+            </c:forEach>
+        </div>
         <div id="pagination">
             （全 ${users_count} 件）<br />
-            <c:forEach var="i" begin="1" end="${((employees_count - 1) / 15) + 1}" step="1">
+            <c:forEach var="i" begin="1" end="${((users_count - 1) / 15) + 1}" step="1">
                 <c:choose>
                     <c:when test="${i == page}">
                         <c:out value="${i}" />&nbsp;

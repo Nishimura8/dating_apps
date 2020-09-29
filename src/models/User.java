@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -27,15 +28,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name", length = 255, nullable = false)
+    @Column(name = "Name", length = 255, nullable = false)
     private String name;
-
+    
     @Column(name = "prefectures", length = 255, nullable = false)
     private String prefectures;
     
     @Column(name = "age", nullable = false)
     private Integer age;
     
+    @Lob
+    @Column(name = "image", columnDefinition="MEDIUMBLOB")
+    private byte[] image;
     
     public Integer getId() {
         return id;
@@ -68,5 +72,11 @@ public class User {
     public void setAge(int age) {
         this.age = age;
     }
-
+    
+    public byte[] getImage() {
+        return image;
+    }
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 }
