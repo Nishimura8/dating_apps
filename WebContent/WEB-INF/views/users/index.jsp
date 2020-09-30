@@ -10,7 +10,7 @@
         <h2>会員一覧</h2>
         <div class="aa">
             <c:forEach var="user" items="${users}">
-                <c:out value="${user.id}" />
+                <img style="width: 100px; height: 100px" src="getImage?id=${ user.id }">
             </c:forEach>
         </div>
         <div id="pagination">

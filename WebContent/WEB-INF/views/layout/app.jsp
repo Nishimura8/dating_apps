@@ -7,16 +7,20 @@
         <title>マッチングアプリ</title>
         <link rel="stylesheet" href="<c:url value='/css/reset.css' />">
         <link rel="stylesheet" href="<c:url value='/css/style.css' />">
+        <link rel="stylesheet" href="<c:url value='https://fonts.googleapis.com/css?family=Corben:700 ' />">
     </head>
     <body>
         <div id="wrapper">
             <div id="header">
                 <div id="header_2">
-                    <img src="https://www.omiai-jp.com/omiai/img/global_menu/logo.svg?1592383735"alt="">
+                    <div class="title">destiny</div>
+                    <img src="https://xk3otuup.user.webaccel.jp/wp/wp-content/uploads/2020/09/dating1.png" height="50px" alt="">
+                    <img src="https://www.omiai-jp.com/omiai/img/global_menu/mypage.svg?1592383735" alt="" class="mypage-mark">
+                    <img src="https://www.omiai-jp.com/omiai/img/global_menu/message.svg?1592383735" alt="" class="message-mark">
                 </div>
-            </div>
-            <div id="content">
-                ${param.content}
+	            <div id="content">
+	                ${param.content}
+	            </div>
             </div>
         </div>
     </body>

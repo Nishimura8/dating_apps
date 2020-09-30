@@ -75,7 +75,7 @@ public class User {
     }
     
     public byte[] getImage() {
-        return image;
+        return this.image;
     }
     public void setImage(byte[] image) {
         this.image = image;
