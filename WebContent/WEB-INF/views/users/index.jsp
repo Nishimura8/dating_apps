@@ -7,10 +7,11 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2>会員一覧</h2>
+        <h3>会員一覧</h3>
         <div class="aa">
             <c:forEach var="user" items="${users}">
-                <img style="width: 100px; height: 100px" src="getImage?id=${ user.id }">
+                  <c:out value="${user.name}" />
+                <img style="width: 100px; height: 100px" src="<c:url value='/Fileconfirmation?id=${user.id}' />">
             </c:forEach>
         </div>
         <div id="pagination">

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../layout/app.jsp">
     <c:param name="content">
-        <h2>会員一覧</h2>
+        <h3>覧</h3>
         <img src="https://pbs.twimg.com/media/DxuoNYDU0AEpXqp.jpg" alt="" style="width: 25%;">
     </c:param>
 </c:import>
