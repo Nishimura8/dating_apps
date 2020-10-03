@@ -8,10 +8,10 @@
             </div>
         </c:if>
         <h3>会員一覧</h3>
-        <div class="aa">
+        <div class="content2">
             <c:forEach var="user" items="${users}">
-                  <c:out value="${user.name}" />
-                <img style="width: 100px; height: 100px" src="<c:url value='/Fileconfirmation?id=${user.id}' />">
+                <img style="width: 161px; height: 217px" src="<c:url value='${user.image}' />" class="img">
+                 <%--  <c:out value="${user.name}"/> --%>
             </c:forEach>
         </div>
         <div id="pagination">

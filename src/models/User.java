@@ -19,6 +19,14 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "getUsersCount",
             query = "SELECT COUNT(u) FROM User AS u"
+            ),
+    @NamedQuery(
+            name = "checkRegisteredName",
+            query = "SELECT COUNT(u) FROM User AS u WHERE u.name = :name"
+            ),
+    @NamedQuery(
+            name = "checkLoginCodeAndPassword",
+            query = "SELECT u FROM User AS u WHERE  u.name = :name AND u.password = :pass"
             )
 })
 @Entity
@@ -30,18 +38,24 @@ public class User {
 
     @Column(name = "name", length = 255, nullable = false)
     private String name;
-    
-    @Column(name = "prefecture", length = 255, nullable = false)
-    private String prefecture;
-    
+
+    @Column(name = "prefecture", nullable = false)
+    private Integer prefecture;
+
+    @Column(name = "gender", nullable = false)
+    private Integer gender;
+
     @Lob
     @Column(name = "image", columnDefinition="MEDIUMBLOB")
-    private byte[] image;
-    
+    private String image;
+
     @Column(name = "age", nullable = false)
     private Integer age;
-    
-    
+
+    @Column(name = "password", length = 64, nullable = false)
+    private String password;
+
+
     public Integer getId() {
         return id;
     }
@@ -58,26 +72,42 @@ public class User {
         this.name = name;
     }
 
-    public String getPrefectures() {
+    public Integer getPrefecture() {
         return prefecture;
     }
 
-    public void setPrefectures(String prefectures) {
+    public void setPrefecture(Integer prefectures) {
         this.prefecture = prefectures;
     }
-    
-    public int getAge() {
+
+    public Integer getAge() {
         return this.age;
     }
-    
-    public void setAge(int age) {
+
+    public void setAge(Integer age) {
         this.age = age;
     }
-    
-    public byte[] getImage() {
+
+    public Integer getGender() {
+        return this.age;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getImage() {
         return this.image;
     }
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

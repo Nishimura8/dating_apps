@@ -18,9 +18,9 @@
                     <img src="https://www.omiai-jp.com/omiai/img/global_menu/mypage.svg?1592383735" alt="" class="mypage-mark">
                     <img src="https://www.omiai-jp.com/omiai/img/global_menu/message.svg?1592383735" alt="" class="message-mark">
                 </div>
-	            <div id="content">
-	                ${param.content}
-	            </div>
+            </div>
+            <div id="content">
+                ${param.content}
             </div>
         </div>
     </body>
