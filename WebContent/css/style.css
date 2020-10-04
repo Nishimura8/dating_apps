@@ -27,10 +27,6 @@ body {
     margin: 0 auto;
 }
 
-.img {
-    padding:20px;
-
-}
 
 h1 {
     width: 94%;
@@ -125,5 +121,16 @@ button {
      padding-top:10px;
 }
 
+
+.user-data {
+    padding: 20px;
+    width: 161px;
+    height: 267.5px;
+    display:inline-block;
+}
+ .img {
+    width:161px;
+    height:201px;
+ }
 
 

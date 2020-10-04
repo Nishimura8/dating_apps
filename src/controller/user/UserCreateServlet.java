@@ -48,6 +48,8 @@ public class UserCreateServlet extends HttpServlet {
 
             u.setName(request.getParameter("name"));
 
+            u.setContent(request.getParameter("content"));
+
             Part part = request.getPart("image");
             String name = this.getFileName(part);
             String path = getServletContext().getRealPath("/uploaded") + "/" + name;
@@ -57,7 +59,7 @@ public class UserCreateServlet extends HttpServlet {
 
             u.setAge(Integer.parseInt(request.getParameter("age")));
 
-            u.setPrefecture(Integer.parseInt(request.getParameter("prefecture")));
+            u.setPrefecture(request.getParameter("prefecture"));
 
             u.setGender(Integer.parseInt(request.getParameter("gender")));
 

@@ -10,13 +10,24 @@
         <h3>会員一覧</h3>
         <div class="content2">
             <c:forEach var="user" items="${users}">
-                <img style="width: 161px; height: 217px" src="<c:url value='${user.image}' />" class="img">
-                 <%--  <c:out value="${user.name}"/> --%>
+                <div class="user-data">
+	                <a href="${pageContext.request.contextPath}/users/show?id=${user.id}">
+	                    <img src="<c:url value='${user.image}' />" class="img">
+	                </a>
+	                <div class="user-information">
+		                <div class="user-name">
+		                    <c:out value="${user.name}"/>
+		                </div>
+		                <div class="age">
+		                    <c:out value="${user.age}歳"/>
+	                    </div>
+	                </div>
+                </div>
             </c:forEach>
         </div>
         <div id="pagination">
             （全 ${users_count} 件）<br />
-            <c:forEach var="i" begin="1" end="${((users_count - 1) / 15) + 1}" step="1">
+            <c:forEach var="i" begin="1" end="${((users_count - 1) / 16) + 1}" step="1">
                 <c:choose>
                     <c:when test="${i == page}">
                         <c:out value="${i}" />&nbsp;

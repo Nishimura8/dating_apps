@@ -40,7 +40,10 @@ public class User {
     private String name;
 
     @Column(name = "prefecture", nullable = false)
-    private Integer prefecture;
+    private String prefecture;
+
+    @Column(name = "content", nullable = false)
+    private String content;
 
     @Column(name = "gender", nullable = false)
     private Integer gender;
@@ -72,11 +75,19 @@ public class User {
         this.name = name;
     }
 
-    public Integer getPrefecture() {
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getPrefecture() {
         return prefecture;
     }
 
-    public void setPrefecture(Integer prefectures) {
+    public void setPrefecture(String prefectures) {
         this.prefecture = prefectures;
     }
 

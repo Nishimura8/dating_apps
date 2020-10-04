@@ -18,7 +18,7 @@ public class UserValidator {
         if(!name_error.equals("")) {
             errors.add(name_error);
         }
-        
+
         String age_error = _validateAge(u.getAge());
         if(!age_error.equals("")) {
             errors.add(age_error);
@@ -28,9 +28,9 @@ public class UserValidator {
         if(!password_error.equals("")) {
             errors.add(password_error);
         }
-        
-        
-        
+
+
+
         return errors;
     }
 
@@ -41,7 +41,7 @@ public class UserValidator {
 
         return "";
     }
-    
+
     private static String _validateAge(Integer age) {
         if(age == null || age.equals("")) {
             return "氏名を入力してください。";
@@ -49,16 +49,16 @@ public class UserValidator {
 
         return "";
     }
-    
-    private static String _validatePrefecture(Integer prefecture) {
+
+    private static String _validatePrefecture(String prefecture) {
         if(prefecture == null || prefecture.equals("")) {
             return "都道府県を選択してください";
         }
 
         return "";
     }
-    
-    
+
+
 
     // パスワードの必須入力チェック
     private static String _validatePassword(String password, Boolean password_check_flag) {
