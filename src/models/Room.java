@@ -1,5 +1,7 @@
 package models;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,15 +11,15 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Table(name = "user")
+@Table(name = "rooms")
 @NamedQueries({
     @NamedQuery(
             name = "getAllRooms",
-            query = "SELECT u FROM User AS u ORDER BY u.id DESC"
+            query = "SELECT r FROM Room AS r ORDER BY r.id DESC"
             ),
     @NamedQuery(
-            name = "getRoomCount",
-            query = "SELECT COUNT(u) FROM User AS u"
+            name = "getRoomsCount",
+            query = "SELECT COUNT(r) FROM Room AS r"
             ),
 
 })
@@ -28,9 +30,8 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name", length = 255, nullable = false)
-    private String name;
-
+    @Column(name = "created_at", nullable = false)
+    private Timestamp created_at;
 
     public Integer getId() {
         return id;
@@ -40,11 +41,11 @@ public class Room {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Timestamp getCreated_at() {
+        return created_at;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCreated_at(Timestamp created_at) {
+        this.created_at = created_at;
     }
 }

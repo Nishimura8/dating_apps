@@ -100,7 +100,7 @@ public class User {
     }
 
     public Integer getGender() {
-        return this.age;
+        return this.gender;
     }
 
     public void setGender(Integer gender) {

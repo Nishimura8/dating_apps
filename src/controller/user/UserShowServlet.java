@@ -32,14 +32,18 @@ public class UserShowServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User login_user = (User)request.getSession().getAttribute("login_user");
+        request.setAttribute("_token", request.getSession().getId());
         EntityManager em = DBUtil.createEntityManager();
-
         User u = em.find(User.class, Integer.parseInt(request.getParameter("id")));
-
+        long follower_count = (long)em.createNamedQuery("getFollowerCount", Long.class)
+                .setParameter("follower", u)
+                .setParameter("follow", login_user)
+                .getSingleResult();
         em.close();
-
+        
         request.setAttribute("user", u);
-
+        request.setAttribute("follower_count", follower_count);  
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/users/show.jsp");
         rd.forward(request, response);
     }

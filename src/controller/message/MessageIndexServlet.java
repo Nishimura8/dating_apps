@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Message;
+import models.Room;
 import utils.DBUtil;
 
 /**
@@ -48,9 +49,13 @@ public class MessageIndexServlet extends HttpServlet {
 
         long messages_count = (long)em.createNamedQuery("getMessagesCount", Long.class)
                                      .getSingleResult();
+        
+        Room room = em.find(Room.class, Integer.parseInt(request.getParameter("id")));
 
         em.close();
-
+        
+        request.setAttribute("_token", request.getSession().getId());
+        request.setAttribute("room", room);
         request.setAttribute("messages", messages);
         request.setAttribute("messages_count", messages_count);
         request.setAttribute("page", page);

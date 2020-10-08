@@ -33,15 +33,16 @@
 
     </div>
 </c:if>
+<form method="POST" action="<c:url value='/message/create' />">
+    <label for="name">氏名</label><br />
+    <c:out value="${sessionScope.login_user.name}" />
+    <br /><br />
 
-<label for="name">氏名</label><br />
-<c:out value="${sessionScope.login_user.name}" />
-<br /><br />
 
-
-<label for="content">内容</label><br />
-<textarea name="content" rows="10" cols="50">${report.content}</textarea>
-<br /><br />
-
-<input type="hidden" name="_token" value="${_token}" />
-<button type="submit">送信</button>
+    <label for="content">内容</label><br />
+    <textarea name="content" rows="10" cols="50">${message.content}</textarea>
+    <br /><br />
+    <input type="hidden" name="room_id" value="${room.id}" />
+    <input type="hidden" name="_token" value="${_token}" />
+    <button type="submit">送信</button>
+</form>

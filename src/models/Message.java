@@ -23,7 +23,11 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "getMessagesCount",
             query = "SELECT COUNT(m) FROM Message AS m"
-            )
+            ),
+    @NamedQuery(
+            name = "getMessagesAllRooms",
+            query = "SELECT f FROM Follow AS f WHERE f.room = :room ORDER BY f.id DESC"
+            ) 
 })
 public class Message {
     @Id
@@ -68,6 +72,14 @@ public class Message {
 
     public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
+    }
+    
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
 }
