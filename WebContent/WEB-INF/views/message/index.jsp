@@ -9,7 +9,13 @@
             </div>
         </c:if>
         <h2>メッセージ　一覧</h2>
-                <c:out value="${message.content}"/>
+          <c:forEach var="message" items="${message}">
+               <div class="message-list">
+                <c:out value="${message.content}"/>       
+                ：
+                <c:out value="${message.user.name}"/>       
+               </div>
+         </c:forEach>
         <div id="pagination">
             <c:forEach var="i" begin="1" end="${((reports_count - 1) / 15) + 1}" step="1">
                 <c:choose>
@@ -40,7 +46,7 @@
 
 
     <label for="content">内容</label><br />
-    <textarea name="content" rows="10" cols="50">${message.content}</textarea>
+    <textarea name="content" rows="10" cols="50"></textarea>
     <br /><br />
     <input type="hidden" name="room_id" value="${room.id}" />
     <input type="hidden" name="_token" value="${_token}" />

@@ -42,21 +42,24 @@ public class MessageIndexServlet extends HttpServlet {
         } catch(Exception e) {
             page = 1;
         }
-        List<Message> messages = em.createNamedQuery("getAllMessages", Message.class)
+        
+        Room room = em.find(Room.class, Integer.parseInt(request.getParameter("id")));
+        List<Message> messages = em.createNamedQuery("getMessagesAllRooms", Message.class)
                                   .setFirstResult(15 * (page - 1))
                                   .setMaxResults(15)
+                                  .setParameter("room", room)
                                   .getResultList();
 
         long messages_count = (long)em.createNamedQuery("getMessagesCount", Long.class)
                                      .getSingleResult();
         
-        Room room = em.find(Room.class, Integer.parseInt(request.getParameter("id")));
+       
 
         em.close();
         
         request.setAttribute("_token", request.getSession().getId());
         request.setAttribute("room", room);
-        request.setAttribute("messages", messages);
+        request.setAttribute("message", messages);
         request.setAttribute("messages_count", messages_count);
         request.setAttribute("page", page);
         if(request.getSession().getAttribute("flush") != null) {
@@ -68,9 +71,6 @@ public class MessageIndexServlet extends HttpServlet {
         rd.forward(request, response);
         
         request.setAttribute("_token", request.getSession().getId());
-
-        Message m = new Message();
-        request.setAttribute("message", m);
 
     }
 

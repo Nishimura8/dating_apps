@@ -26,7 +26,7 @@ import javax.persistence.Table;
             ),
     @NamedQuery(
             name = "getMessagesAllRooms",
-            query = "SELECT f FROM Follow AS f WHERE f.room = :room ORDER BY f.id DESC"
+            query = "SELECT m FROM Message AS m WHERE m.room = :room ORDER BY m.id DESC"
             ) 
 })
 public class Message {
@@ -72,6 +72,10 @@ public class Message {
 
     public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
+    }
+    
+    public User getUser() {
+        return this.user;
     }
     
     public void setUser(User user) {
