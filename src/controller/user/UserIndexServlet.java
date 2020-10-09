@@ -17,7 +17,7 @@ import utils.DBUtil;
 /**
  * Servlet implementation class EmployeesIndexServlet
  */
-@WebServlet("/users/index")
+@WebServlet("/index.html")
 public class UserIndexServlet extends HttpServlet {
    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

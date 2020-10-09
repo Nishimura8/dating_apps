@@ -16,7 +16,7 @@
             <button type="submit">フォローする</button>
              </c:if>
         </form>
-        <p><a href="${pageContext.request.contextPath}/users/index">一覧に戻る</a></p>
+        <p><a href="${pageContext.request.contextPath}">一覧に戻る</a></p>
 
     </c:param>
 </c:import>

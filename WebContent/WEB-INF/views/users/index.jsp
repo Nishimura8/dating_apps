@@ -7,7 +7,6 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h3>会員一覧</h3>
         <div class="content2">
             <c:forEach var="user" items="${users}">
                 <c:if test="${(sessionScope.login_user.gender == 0 && user.gender == 1) || (sessionScope.login_user.gender == 1 && user.gender == 0)}">
