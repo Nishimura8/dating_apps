@@ -47,11 +47,18 @@ public class RoomIndexServlet extends HttpServlet {
                                      .setParameter("follow", login_user)
                                      .getResultList();
 
+        
+        List<User> users = em.createNamedQuery("getAllUsers", User.class)
+                .setFirstResult(16 * (page - 1))
+                .setMaxResults(16)
+                .getResultList();
+
         long rooms_count = (long)em.createNamedQuery("getRoomsCount", Long.class)
                                        .getSingleResult();
 
         em.close();
 
+        request.setAttribute("user", users);
         request.setAttribute("follows", follows);
         request.setAttribute("rooms_count", rooms_count);
         request.setAttribute("page", page);

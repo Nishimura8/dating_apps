@@ -11,11 +11,24 @@
         <h2>メッセージ　一覧</h2>
           <c:forEach var="message" items="${message}">
                <div class="message-list">
-                <c:out value="${message.content}"/>       
+                <c:out value="${message.content}"/>
                 ：
-                <c:out value="${message.user.name}"/>       
+                <c:out value="${message.user.name}"/>
                </div>
          </c:forEach>
+         <form method="POST" action="<c:url value='/message/create' />">
+            <br /><br />
+            <label for="name">氏名</label><br />
+            <c:out value="${sessionScope.login_user.name}" />
+            <div class="c">
+            <label for="content">内容</label><br />
+            <textarea name="content" rows="10" cols="50"></textarea>
+            </div>
+
+            <input type="hidden" name="room_id" value="${room.id}" />
+            <input type="hidden" name="_token" value="${_token}" />
+            <button type="submit">送信</button>
+        </form>
         <div id="pagination">
             <c:forEach var="i" begin="1" end="${((reports_count - 1) / 15) + 1}" step="1">
                 <c:choose>
@@ -39,14 +52,3 @@
 
     </div>
 </c:if>
-<form method="POST" action="<c:url value='/message/create' />">
-    <label for="name">氏名</label><br />
-    <c:out value="${sessionScope.login_user.name}" />
-    <br /><br />
-    <label for="content">内容</label><br />
-    <textarea name="content" rows="10" cols="50"></textarea>
-    <br /><br />
-    <input type="hidden" name="room_id" value="${room.id}" />
-    <input type="hidden" name="_token" value="${_token}" />
-    <button type="submit">送信</button>
-</form>

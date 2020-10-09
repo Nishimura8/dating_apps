@@ -10,9 +10,16 @@
         </c:if>
         <h2>メッセージのやりとり一覧</h2>
                 <c:forEach var="follow" items="${follows}" varStatus="status">
-	                    <div class="row${status.count % 2}"></div>
-                        <div class="message_name"><c:out value="${user.name}" />さんとのメッセージ</div>
-                        aaa
+                   <div class="row${status.count % 2}"></div>
+                    <c:choose>
+                    <c:when test="${sessionScope.login_user.id == follow.follower.id}">
+                          <div class="message_name"><c:out value="${follow.follow.name}" />さんとのメッセージ</div>
+                    </c:when>
+                    <c:otherwise>
+                          <div class="message_name"><c:out value="${follow.follower.name}" />さんとのメッセージ</div>
+                    </c:otherwise>
+                    </c:choose>
+	              
                         <div class="message_action"><a href="<c:url value='/messages/index?id=${follow.room.id}' />">メッセージを見る</a></div>
                 </c:forEach>
         <div id="pagination">
