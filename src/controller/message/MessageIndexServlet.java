@@ -45,8 +45,6 @@ public class MessageIndexServlet extends HttpServlet {
         
         Room room = em.find(Room.class, Integer.parseInt(request.getParameter("id")));
         List<Message> messages = em.createNamedQuery("getMessagesAllRooms", Message.class)
-                                  .setFirstResult(15 * (page - 1))
-                                  .setMaxResults(15)
                                   .setParameter("room", room)
                                   .getResultList();
 

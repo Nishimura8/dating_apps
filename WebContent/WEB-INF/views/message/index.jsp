@@ -29,18 +29,7 @@
             <input type="hidden" name="_token" value="${_token}" />
             <button type="submit">送信</button>
         </form>
-        <div id="pagination">
-            <c:forEach var="i" begin="1" end="${((reports_count - 1) / 15) + 1}" step="1">
-                <c:choose>
-                    <c:when test="${i == page}">
-                        <c:out value="${i}" />&nbsp;
-                    </c:when>
-                    <c:otherwise>
-                        <a href="<c:url value='/message/index?page=${i}' />"><c:out value="${i}" /></a>&nbsp;
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-        </div>
+
     </c:param>
 </c:import>
 <c:if test="${errors != null}">
