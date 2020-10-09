@@ -9,10 +9,11 @@
             </div>
         </c:if>
         <h2>メッセージのやりとり一覧</h2>
-                <c:forEach var="room" items="${rooms}" varStatus="status">
-                    <div class="row${status.count % 2}"></div>
+                <c:forEach var="follow" items="${follows}" varStatus="status">
+	                    <div class="row${status.count % 2}"></div>
                         <div class="message_name"><c:out value="${user.name}" />さんとのメッセージ</div>
-                        <div class="message_action"><a href="<c:url value='/messages/index?id=${room.id}' />">メッセージを見る</a></div>
+                        aaa
+                        <div class="message_action"><a href="<c:url value='/messages/index?id=${follow.room.id}' />">メッセージを見る</a></div>
                 </c:forEach>
         <div id="pagination">
             （全 ${rooms_count} 件）<br />

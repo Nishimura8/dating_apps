@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Room;
+import models.Follow;
+import models.User;
 import utils.DBUtil;
 
 /**
@@ -34,14 +35,16 @@ public class RoomIndexServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
-
+        User login_user = (User)request.getSession().getAttribute("login_user");
         int page = 1;
         try{
             page = Integer.parseInt(request.getParameter("page"));
         } catch(NumberFormatException e) { }
-        List<Room> rooms = em.createNamedQuery("getAllRooms", Room.class)
+        List<Follow> follows = em.createNamedQuery("checkMyRoom", Follow.class)
                                      .setFirstResult(15 * (page - 1))
                                      .setMaxResults(15)
+                                     .setParameter("follower", login_user)
+                                     .setParameter("follow", login_user)
                                      .getResultList();
 
         long rooms_count = (long)em.createNamedQuery("getRoomsCount", Long.class)
@@ -49,7 +52,7 @@ public class RoomIndexServlet extends HttpServlet {
 
         em.close();
 
-        request.setAttribute("rooms", rooms);
+        request.setAttribute("follows", follows);
         request.setAttribute("rooms_count", rooms_count);
         request.setAttribute("page", page);
         if(request.getSession().getAttribute("flush") != null) {

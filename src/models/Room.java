@@ -20,8 +20,7 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "getRoomsCount",
             query = "SELECT COUNT(r) FROM Room AS r"
-            ),
-
+            )
 })
 @Entity
 public class Room {

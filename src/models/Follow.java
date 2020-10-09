@@ -29,6 +29,10 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "getFollowerCount",
             query = "SELECT COUNT(f) FROM Follow AS f  WHERE f.follower = :follower AND f.follow = :follow  ORDER BY f.id DESC"
+            ),
+    @NamedQuery(
+            name = "checkMyRoom",
+            query = "SELECT f FROM Follow AS f WHERE f.follower = :follower OR f.follow = :follow ORDER BY f.id DESC"
             )
 })
 public class Follow {
