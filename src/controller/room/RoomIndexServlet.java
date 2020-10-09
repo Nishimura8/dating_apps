@@ -1,6 +1,7 @@
 package controller.room;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -41,12 +42,21 @@ public class RoomIndexServlet extends HttpServlet {
             page = Integer.parseInt(request.getParameter("page"));
         } catch(NumberFormatException e) { }
         List<Follow> follows = em.createNamedQuery("checkMyRoom", Follow.class)
-                                     .setFirstResult(15 * (page - 1))
-                                     .setMaxResults(15)
                                      .setParameter("follower", login_user)
                                      .setParameter("follow", login_user)
                                      .getResultList();
+        
+        List<Follow> followCheck = new ArrayList<Follow>();
+        List<Integer> roomSave = new ArrayList<Integer>();
+        for (Follow follow : follows) {
+            int room =  follow.getRoom().getId();
+            if(!roomSave.contains(room)) {
+                followCheck.add(follow);
+                roomSave.add(room);
+            }
+    }
 
+        
         
         List<User> users = em.createNamedQuery("getAllUsers", User.class)
                 .setFirstResult(16 * (page - 1))
@@ -59,7 +69,7 @@ public class RoomIndexServlet extends HttpServlet {
         em.close();
 
         request.setAttribute("user", users);
-        request.setAttribute("follows", follows);
+        request.setAttribute("follows", followCheck);
         request.setAttribute("rooms_count", rooms_count);
         request.setAttribute("page", page);
         if(request.getSession().getAttribute("flush") != null) {

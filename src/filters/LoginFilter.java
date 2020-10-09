@@ -18,7 +18,7 @@ import models.User;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter("/aaa")
+@WebFilter("*")
 public class LoginFilter implements Filter {
 
     /**
@@ -42,7 +42,7 @@ public class LoginFilter implements Filter {
         String context_path = ((HttpServletRequest)request).getContextPath();
         String servlet_path = ((HttpServletRequest)request).getServletPath();
 
-        if(!servlet_path.matches("/css.*")) {       // CSSフォルダ内は認証処理から除外する
+        if(!servlet_path.matches("/css.*") && !servlet_path.equals("/users/new")) {       // CSSフォルダ内は認証処理から除外する
             HttpSession session = ((HttpServletRequest)request).getSession();
 
  
