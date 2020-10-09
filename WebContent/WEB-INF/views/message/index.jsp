@@ -43,8 +43,6 @@
     <label for="name">氏名</label><br />
     <c:out value="${sessionScope.login_user.name}" />
     <br /><br />
-
-
     <label for="content">内容</label><br />
     <textarea name="content" rows="10" cols="50"></textarea>
     <br /><br />
