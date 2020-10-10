@@ -68,7 +68,7 @@ public class FollowCreateServlet extends HttpServlet {
                 em.persist(f);
                 em.getTransaction().commit();
                 em.close();
-                response.sendRedirect(request.getContextPath() + "/users/index");
+                response.sendRedirect(request.getContextPath());
             }
         }
     }
