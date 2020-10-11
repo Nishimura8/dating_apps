@@ -18,13 +18,11 @@
          </c:forEach>
          <form method="POST" action="<c:url value='/message/create' />">
             <br /><br />
-            <label for="name">氏名</label><br />
-            <c:out value="${sessionScope.login_user.name}" />
+            <c:out value="氏名:${sessionScope.login_user.name}" />
             <div class="c">
-            <label for="content">内容</label><br />
+            <label for="content">メッセージ内容</label><br />
             <textarea name="content" rows="10" cols="50"></textarea>
             </div>
-
             <input type="hidden" name="room_id" value="${room.id}" />
             <input type="hidden" name="_token" value="${_token}" />
             <button type="submit">送信</button>

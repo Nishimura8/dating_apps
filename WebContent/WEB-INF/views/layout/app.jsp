@@ -19,8 +19,10 @@
                     <a href="<c:url value='/rooms/index' />">  <img src="https://www.omiai-jp.com/omiai/img/global_menu/message.svg?1592383735" alt="" class="message-mark"></a>
                 </div>
             </div>
+            <div id="contents2">
             <div id="content">
                 ${param.content}
+            </div>
             </div>
         </div>
     </body>
